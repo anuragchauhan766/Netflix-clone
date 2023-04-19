@@ -1,0 +1,122 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["src/**/*{Slice,Actions}.ts"],
+      "rules": {
+        "no-param-reassign": [
+          "error",
+          {
+            "props": false
+          }
+        ]
+      }
+    },
+    {
+      "files": ["**/*.ts?(x)"],
+      "plugins": ["@typescript-eslint"],
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "default",
+            "format": ["camelCase"],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "allow"
+          },
+          {
+            "selector": [
+              "classProperty",
+              "objectLiteralProperty",
+              "typeProperty",
+              "classMethod",
+              "objectLiteralMethod",
+              "typeMethod",
+              "accessor",
+              "enumMember"
+            ],
+            "format": null,
+            "modifiers": ["requiresQuotes"]
+          },
+          {
+            "selector": "variable",
+            "format": ["camelCase", "UPPER_CASE", "PascalCase"],
+            "leadingUnderscore": "allowSingleOrDouble",
+            "trailingUnderscore": "allow"
+          },
+          {
+            "selector": "typeLike",
+            "format": ["PascalCase"],
+            "custom": {
+              "regex": "^I[A-Z]|[a-zA-Z]Type$",
+              "match": false
+            }
+          },
+          {
+            "selector": "typeProperty",
+            "format": ["camelCase", "PascalCase"]
+          },
+          {
+            "selector": "objectLiteralProperty",
+            "format": ["camelCase", "PascalCase"],
+            "leadingUnderscore": "allowSingleOrDouble"
+          },
+          {
+            "selector": "function",
+            "format": ["camelCase", "PascalCase"]
+          },
+          {
+            "selector": "enumMember",
+            "format": ["PascalCase"]
+          }
+        ]
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "ignorePatterns": ["postcss.config.js", "vite.config.ts"],
+  "rules": {
+    "@typescript-eslint/naming-convention": "error",
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports"
+      }
+    ],
+    "quotes": [
+      2,
+      "double",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "react/react-in-jsx-scope": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": true,
+        "peerDependencies": true
+      }
+    ],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"]
+  }
+}
